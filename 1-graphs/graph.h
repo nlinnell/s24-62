@@ -48,8 +48,12 @@ public:
     bool is_edge(std::size_t i, std::size_t j)  const;
 
     //pre:none
-    //post: Print the vertices of the Graph in BFS order starting at 0
+    //post: Print the vertices of the Graph in BFS order starting at source
     void bfs(std::size_t source);
+
+    //pre:none
+    //post: Print the vertices of the Graph in DFS (post traversal) order starting at source
+    void DFS(int source);
 /*
     // pre: none
     // post: returns the number of connected components of this Graph

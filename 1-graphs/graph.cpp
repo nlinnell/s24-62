@@ -2,6 +2,7 @@
 #include <cassert>
 #include <queue>
 #include <set>
+#include <stack>
 
 
     // pre: none
@@ -102,6 +103,50 @@
         }
  
     }
+void print_stack(std::stack<int> s)//Helper for DFS
+{
+  std::stack<int> s2;
+  while (!s.empty()) {
+    s2.push(s.top());
+    s.pop();
+  }
+  while (!s2.empty())
+  {
+    std::cout << s2.top() << " ";
+    s2.pop();
+  }
+  std::cout << std::endl;
+}
+void Graph::DFS(int source) {
+    std::stack<int> stck;
+    std::vector<bool> visited (n(), 0);
+
+    visited[source] = true;
+    stck.push(source);
+
+    while (stck.size() > 0) {
+      int cur = stck.top();
+      stck.pop();//print here for post traversal
+
+      for (auto neighbor : data_[cur]) {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stck.push(neighbor);//print here for pre traversal
+        }
+      }
+      // print statements added for post traversal
+      std::cout << "cur: " << cur << std::endl;
+      std::cout << "stck: ";
+      print_stack(stck);
+      std::cout << "visited: ";
+      for (int i = 0; i < n(); i ++) {
+        std::cout << i << (visited[i] ? "T" : "F") << " ";
+      }
+      std::cout << std::endl;
+    }
+  }
+
+
 
 /*
 
