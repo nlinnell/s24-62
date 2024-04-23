@@ -51,9 +51,6 @@ int main(){
   Person p;
   Customer c; 
 
-  p = c;
-  c = p;
-
   p.foo();
   c.foo();
 
